@@ -1,0 +1,22 @@
+self.setVar('name','"Ashcan" Pete')
+self.setVar('hp',7)
+self.setVar('san',5)
+self.setVar('starters',{ uniqueassets = {'Duke - Ally'}, token = {'Clue','Focus'}}) --,'Clue Token','Focus Token'})
+self.setVar('location','Scandanavia - Space 14')
+
+self.createButton({
+    click_function = 'setup_playerCharacter',
+    function_owner = Global,
+    label          = 'Setup',
+    tooltip        = 'Setup Investigator',
+    position       = {-0.48, 0.6, 0.2},
+    rotation       = {0, 0, 0},
+    scale          = {0.45, 1, 0.75},
+    width          = 800,
+    height         = 320,
+    font_size      = 130,
+    color          = {1, 1, 1},
+    hover_color    = {1, 1, 1},
+    press_color    = {1, 1, 1},
+    font_color     = {0, 0, 0}
+})

@@ -1,0 +1,1235 @@
+<!-- Eldrich Horror - Scripted Setup by Kayin -->
+
+<Defaults>
+    <!-- Set the default color and font size for all Text elements -->
+    <Text color="rgb(1,1,1)" fontSize="16" />
+    <!-- Defautl panel styles -->
+    <Panel showAnimation="FadeIn" hideAnimation="FadeOut" width="100%" height="860" padding="24" />
+    <!-- Default buttons -->
+    <Button
+        fontSize="16" height="32" preferredHeight="32" />
+
+    <!-- Title Text -->
+    <Text class="panel-title" fontSize="20" fontStyle="bold" height="32" />
+    <!-- Close Buttons -->
+    <Button
+        class="button__close"
+        colors="rgb(1,1,1)|rgb(0.8,0,0)|rgb(0.6,0,0)|rgba(0.78,0.78,0.78,0.5)"
+        ignoreLayout="true"
+        rectAlignment="UpperRight"
+        width="100"
+        height="32"
+        offsetXY="-24 -24" />
+    <Button class="button__small" fontSize="12" />
+    <Button class="button__conditions" colors="rgb(1,1,1)|rgb(0.95,0.70,0.70)|rgb(0.76,0.34,0.35)|rgba(0.78,0.78,0.78,0.5)" />
+    <Button class="button__spells" colors="rgb(1,1,1)|rgb(0.87,0.73,0.83)|rgb(0.53,0.36,0.48)|rgba(0.78,0.78,0.78,0.5)" />
+    <Button class="button__spells" colors="rgb(1,1,1)|rgb(0.93, 0.69, 0.41)|rgb(0.63, 0.48, 0.30)|rgba(0.78,0.78,0.78,0.5)" />
+</Defaults>
+
+<!-- Game Setup Panel Menu -->
+<Panel
+    id="setup"
+    active="false"
+    color="rgba(0.15,0.15,0.15,0.90)">
+    <VerticalLayout
+        childForceExpandHeight="false"
+        spacing="24">
+        <Text class="panel-title" minHeight="20">Game Setup</Text>
+        <Button
+            class="button__close"
+            onClick="closeMenu(setup)">
+            ✕ Close
+        </Button>
+        <Text>This menu is not ready yet...</Text>
+    </VerticalLayout>
+</Panel>
+
+<!-- Draw Conditions Panel Menu -->
+<Panel
+    id="conditions"
+    active="false"
+    color="rgba(0.21,0,0,0.90)">
+    <!-- Close Menu Button -->
+    <Button
+        class="button__close"
+        onClick="closeMenu(conditions)">
+        ✕ Close
+    </Button>
+    <!-- Vertical Page Layout -->
+    <VerticalLayout
+        childForceExpandHeight="false"
+        childAlignment="UpperCenter"
+        spacing="32">
+        <!-- Title -->
+        <Text class="panel-title" minHeight="20" alignment="UpperCenter">Draw Conditions</Text>
+        <!-- Draw Random Card by Type Area -->
+        <Text minHeight="20">Draw a random Condition by Type:</Text>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 8">
+            <!-- Column 1 -->
+            <Button
+                id="Bane"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Bane)">
+                Draw a Bane
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="Boon"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Boon)">
+                Draw a Boon
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="Deal"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Deal)">
+                Draw a Deal
+            </Button>
+            <!-- Column 4 -->
+            <Button
+                id="Exposure"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Exposure)">
+                Draw an Exposure
+            </Button>
+            <!-- Column 5 -->
+            <Button
+                id="Injury"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Injury)">
+                Draw an Injury
+            </Button>
+            <!-- Column 6 -->
+            <Button
+                id="Illness"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Illness)">
+                Draw an Illness
+            </Button>
+            <!-- Column 7 -->
+            <Button
+                id="Madness"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Madness)">
+                Draw a Madness
+            </Button>
+            <!-- Column 8 -->
+            <Button
+                id="Persuit"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Persuit)">
+                Draw a Persuit
+            </Button>
+            <!-- Column 9 -->
+            <Button
+                id="Restriction"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Restriction)">
+                Draw a Restriction
+            </Button>
+        </HorizontalLayout>
+        <!-- Draw Random Card by Name Area -->
+        <Text minHeight="20">Draw a random Condition by Name:</Text>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 8">
+            <!-- Column 1 - Banes -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Blight"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Blight)">
+                    Blight
+                </Button>
+                <Button
+                    id="Cursed"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Cursed)">
+                    Cursed
+                </Button>
+                <Button
+                    id="Corruption"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Corruption)">
+                    Corruption
+                </Button>
+                <Button
+                    id="Haunted"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Haunted)">
+                    Haunted
+                </Button>
+            </VerticalLayout>
+            <!-- Column 2 - Boons -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Blessed"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Blessed)">
+                    Blessed
+                </Button>
+                <Button
+                    id="Composed"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Composed)">
+                    Composed
+                </Button>
+                <Button
+                    id="LivingLink"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Living Link)">
+                    Living Link
+                </Button>
+                <Button
+                    id="Righteous"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    cardName="Righteous"
+                    onClick="button_drawCard_from_UI(Righteous)">
+                    Righteous
+                </Button>
+            </VerticalLayout>
+            <!-- Column 3 - Deals -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Agreement"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    cardName="Agreement"
+                    onClick="button_drawCard_from_UI(Agreement)">
+                    Agreement
+                </Button>
+                <Button
+                    id="DarkPact"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Dark Pact)">
+                    Dark Pact
+                </Button>
+                <Button
+                    id="Debt"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    cardName="Debt"
+                    onClick="button_drawCard_from_UI(Debt)">
+                    Debt
+                </Button>
+                <Button
+                    id="Funding"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    cardName="Funding"
+                    onClick="button_drawCard_from_UI(Funding)">
+                    Funding
+                </Button>
+                <Button
+                    id="PromiseofPower"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Promise of Power)">
+                    Promise of Power
+                </Button>
+            </VerticalLayout>
+            <!-- Column 3 - Exposures -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Hypothermia"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Hypothermia)">
+                    Hypothermia
+                </Button>
+            </VerticalLayout>
+            <!-- Column 4 - Injuries -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="BackInjury"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Back Injury)">
+                    Back Injury
+                </Button>
+                <Button
+                    id="HeadInjury"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Head Injury)">
+                    Head Injury
+                </Button>
+                <Button
+                    id="InternalInjury"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Internal Injury)">
+                    Internal Injury
+                </Button>
+                <Button
+                    id="LegInjury"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Leg Injury)">
+                    Leg Injury
+                </Button>
+            </VerticalLayout>
+            <!-- Column 5 - Illneses-->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Diseased"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Diseased)">
+                    Diseased
+                </Button>
+                <Button
+                    id="Infection"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Infection)">
+                    Infection
+                </Button>
+                <Button
+                    id="Poisoned"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Poisoned)">
+                    Poisoned
+                </Button>
+            </VerticalLayout>
+            <!-- Column 6 - Madnesses -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Amnesia"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Amnesia)">
+                    Amnesia
+                </Button>
+                <Button
+                    id="Despair"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Despair)">
+                    Despair
+                </Button>
+                <Button
+                    id="Hallucinations"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Hallucinations)">
+                    Hallucinations
+                </Button>
+                <Button
+                    id="Hunger"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Hunger)">
+                    Hunger
+                </Button>
+                <Button
+                    id="Paranoia"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Paranoia)">
+                    Paranoia
+                </Button>
+                <Button
+                    id="Terror"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Terror)">
+                    Terror
+                </Button>
+            </VerticalLayout>
+            <!-- Column 7 - Persuits -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Hunted"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Hunted)">
+                    Hunted
+                </Button>
+                <Button
+                    id="Wanted"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Wanted)">
+                    Wanted
+                </Button>
+            </VerticalLayout>
+            <!-- Column 8 - Restrictions-->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Detained"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Detained)">
+                    Detained
+                </Button>
+                <Button
+                    id="LostInTime"
+                    class="button__small button__conditions"
+                    deck="conditions"
+                    onClick="button_drawCard_from_UI(Lost in Time)">
+                    Lost in Time
+                </Button>
+            </VerticalLayout>
+        </HorizontalLayout>
+        <!-- Draw Random Talents Area -->
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            childForceExpandWidth="false"
+            spacing="24"
+            padding="32 32 0 0"
+            childAlignment="MiddleCenter">
+            <Button
+                id="Talent"
+                class="button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Talent)"
+                preferredWidth="300">
+                Draw a Talent
+            </Button>
+        </HorizontalLayout>
+        <Text minHeight="20">Draw a random Talent by Name:</Text>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 0"
+            childAlignment="UpperCenter">
+            <!-- Column 1 -->
+            <Button
+                id="Attuned"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Attuned)">
+                Attuned
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="Composed"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Composed)">
+                Composed
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="Elusive"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Elusive)">
+                Elusive
+            </Button>
+            <!-- Column 4 -->
+            <Button
+                id="Guts"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Guts)">
+                Guts
+            </Button>
+            <!-- Column 5 -->
+            <Button
+                id="Headstrong"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Headstrong)">
+                Headstrong
+            </Button>
+            <!-- Column 6 -->
+            <Button
+                id="MartialProwess"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Martial Prowess)">
+                Martial Prowess
+            </Button>
+            <!-- Column 7 -->
+            <Button
+                id="Meditation"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Meditation)">
+                Meditiation
+            </Button>
+            <!-- Column 8 -->
+            <Button
+                id="Moxie"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Moxie)">
+                Moxie
+            </Button>
+            <!-- Column 9 -->
+            <Button
+                id="Perceptive"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Perceptive)">
+                Perceptive
+            </Button>
+        </HorizontalLayout>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 0"
+            childAlignment="UpperCenter">
+            <!-- Column 1 -->
+            <Button
+                id="Practiced"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Practiced)">
+                Practiced
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="QuickStudy"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Quick Study)">
+                Quick Study
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="Relentless"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Relentless)">
+                Relentless
+            </Button>
+            <!-- Column 4 -->
+            <Button
+                id="Resilient"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Resilient)">
+                Resilient
+            </Button>
+            <!-- Column 5 -->
+            <Button
+                id="Rugged"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Rugged)">
+                Rugged
+            </Button>
+            <!-- Column 6 -->
+            <Button
+                id="SilverTongued"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Silver Tongued)">
+                Silver Tongued
+            </Button>
+            <!-- Column 7 -->
+            <Button
+                id="Skulduggery"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Skulduggery)">
+                Skulduggery
+            </Button>
+            <!-- Column 8 -->
+            <Button
+                id="Studious"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Studious)">
+                Studious
+            </Button>
+            <!-- Column 9 -->
+            <Button
+                id="Visions"
+                class="button__small button__conditions"
+                deck="conditions"
+                onClick="button_drawCard_from_UI(Visions)">
+                Visions
+            </Button>
+        </HorizontalLayout>
+    </VerticalLayout>
+</Panel>
+
+<!-- Draw Spells Panel Menu -->
+<Panel
+    id="spells"
+    active="false"
+    color="rgba(0.15,0.05,0.25,0.75)">
+    <!-- Close Menu Button -->
+    <Button
+        class="button__close"
+        onClick="closeMenu(spells)">
+        ✕ Close
+    </Button>
+    <!-- Vertical Page Layout -->
+    <VerticalLayout
+        childForceExpandHeight="false"
+        childAlignment="UpperCenter"
+        spacing="32">
+        <!-- Title -->
+        <Text class="panel-title" minHeight="20" alignment="UpperCenter">Draw Spells</Text>
+        <!-- Draw Random Card by Type Area -->
+        <Text minHeight="20">Draw a random Spell by Type:</Text>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 8"
+            childAlignment="MiddleCenter">
+            <!-- Column 1 -->
+            <Button
+                id="Glamour"
+                class="button__spells button__spells--type"
+                deck="spells"
+                onClick="button_drawCard_from_UI(Glamour)"
+                preferredWidth="300">
+                Draw a Glamour
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="Incantation"
+                class="button__spells button__spells--type"
+                deck="spells"
+                onClick="button_drawCard_from_UI(Incantation)"
+                preferredWidth="300">
+                Draw an Incantation
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="Ritual"
+                class="button__spells button__spells--type"
+                deck="spells"
+                onClick="button_drawCard_from_UI(Ritual)"
+                preferredWidth="300">
+                Draw a Ritual
+            </Button>
+        </HorizontalLayout>
+        <!-- Draw Random Card by Name Area -->
+        <Text minHeight="20">Draw a random Spell by Name:</Text>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 8">
+            <!-- Column 1 - Glamours A -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="AlterFate"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Alter Fate)">
+                    Alter Fate
+                </Button>
+                <Button
+                    id="AzureFlame"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Azure Flame)">
+                    Azure Flame
+                </Button>
+                <Button
+                    id="EnchantingGrace"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Enchanting Grace)">
+                    Enchanting Grace
+                </Button>
+                <Button
+                    id="FindGate"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Find Gate)">
+                    Find Gate
+                </Button>
+                <Button
+                    id="MarkingsofIsis"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Markings of Isis)">
+                    Markings of Isis
+                </Button>
+                <Button
+                    id="ShroudofShadow"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Shroud of Shadow)">
+                    Shroud of Shadow
+                </Button>
+            </VerticalLayout>
+            <!-- Column 2 - Glamours B -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="AstralTravel"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Astral Travel)">
+                    Astral Travel
+                </Button>
+                <Button
+                    id="BeastWithin"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Beast Within)">
+                    Beast Within
+                </Button>
+                <Button
+                    id="EnchantWeapon"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Enchant Weapon)">
+                    Enchant Weapon
+                </Button>
+                <Button
+                    id="ForcedLearning"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Forced Learning)">
+                    Forced Learning
+                </Button>
+                <Button
+                    id="MindsEye"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Mind's Eye)">
+                    Mind's Eye
+                </Button>
+                <Button
+                    id="VoiceofRa"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Voice of Ra)">
+                    Voice of Ra
+                </Button>
+            </VerticalLayout>
+            <!-- Column 3 - Incantations A -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Binding"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Binding)">
+                    Binding
+                </Button>
+                <Button
+                    id="DreadCurse"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Dread Curse)">
+                    Dread Curse
+                </Button>
+                <Button
+                    id="HealingWords"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Healing Words)">
+                    Healing Words
+                </Button>
+                <Button
+                    id="Intervene"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Intervene)">
+                    Intervene
+                </Button>
+                <Button
+                    id="SpectralRazor"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Spectral Razor)">
+                    Spectral Razor
+                </Button>
+                <Button
+                    id="Wither"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Wither)">
+                    Wither
+                </Button>
+            </VerticalLayout>
+            <!-- Column 4 - Incantations B -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Clairvoyance"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Clairvoyance)">
+                    Clairvoyance
+                </Button>
+                <Button
+                    id="FleshWard"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Flesh Ward)">
+                    Flesh Ward
+                </Button>
+                <Button
+                    id="InstillBravery"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Instill Bravery)">
+                    Instill Bravery
+                </Button>
+                <Button
+                    id="MistsOfReleh"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Mists of Releh)">
+                    Mists of Releh
+                </Button>
+                <Button
+                    id="StormOfSpirits"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Storm of Spirits)">
+                    Storm of Spirits
+                </Button>
+                <Button
+                    id="Wrack"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Wrack)">
+                    Wrack
+                </Button>
+            </VerticalLayout>
+            <!-- Column 5 - Rituals A -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="ArcaneInsight"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Arcane Insight)">
+                    Arcane Insight
+                </Button>
+                <Button
+                    id="BlessingOfIsis"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Blessing of Isis)">
+                    Blessing of Isis
+                </Button>
+                <Button
+                    id="Conjuration"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Conjuration)">
+                    Conjuration
+                </Button>
+                <Button
+                    id="OccultExaltation"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Occult Exaltation)">
+                    Occult Exaltation
+                </Button>
+                <Button
+                    id="PoisonMist"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Poison Mist)">
+                    Poison Mist
+                </Button>
+                <Button
+                    id="SummonByakhee"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Summon Byakhee)">
+                    Summon Byakhee
+                </Button>
+            </VerticalLayout>
+            <!-- Column 6 - Rituals B -->
+            <VerticalLayout
+                childForceExpandHeight="false"
+                spacing="24">
+                <Button
+                    id="Banishment"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Banishment)">
+                    Banishment
+                </Button>
+                <Button
+                    id="CallTheStorm"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Call the Storm)">
+                    Call the Storm
+                </Button>
+                <Button
+                    id="FeedTheMind"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Feed the Mind)">
+                    Feed the Mind
+                </Button>
+                <Button
+                    id="PlumbTheVoid"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Plumb the Void)">
+                    Plumb the Void
+                </Button>
+                <Button
+                    id="Shriveling"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Shriveling)">
+                    Shriveling
+                </Button>
+                <Button
+                    id="Summoning"
+                    class="button__small button__spells"
+                    deck="spells"
+                    onClick="button_drawCard_from_UI(Summoning)">
+                    Summoning
+                </Button>
+            </VerticalLayout>
+        </HorizontalLayout>
+    </VerticalLayout>
+</Panel>
+
+<!-- Draw Conditions Panel Menu -->
+<Panel
+    id="uniqueassets"
+    active="false"
+    color="rgba(0.27,0.20,0.11,0.90)">
+    <!-- Close Menu Button -->
+    <Button
+        class="button__close"
+        onClick="closeMenu(uniqueassets)">
+        ✕ Close
+    </Button>
+    <!-- Vertical Page Layout -->
+    <VerticalLayout
+        childForceExpandHeight="false"
+        childAlignment="UpperCenter"
+        spacing="32">
+        <!-- Title -->
+        <Text class="panel-title" minHeight="20" alignment="UpperCenter">Draw Unique Assets</Text>
+        <!-- Draw Random Card by Type Area -->
+        <Text minHeight="20">Draw a random Unique Asset by Type:</Text>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 8">
+            <!-- Column 1 -->
+            <Button
+                id="Ally"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Ally)">
+                Draw an Ally
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="Character"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Character)">
+                Draw a Character
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="Item"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Item)">
+                Draw an Item
+            </Button>
+            <!-- Column 4 -->
+            <Button
+                id="Magical"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Magical)">
+                Draw a Magical Item
+            </Button>
+            <!-- Column 5 -->
+            <Button
+                id="Relic"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Relic)">
+                Draw a Relic
+            </Button>
+        </HorizontalLayout>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 8">
+            <!-- Column 1 -->
+            <Button
+                id="Tarot"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Tarot)">
+                Draw a Tarot
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="Task"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Task)">
+                Draw a Task
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="Tome"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Tome)">
+                Draw a Tome
+            </Button>
+            <!-- Column 4 -->
+            <Button
+                id="Trinket"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Trinket)">
+                Draw a Trinket
+            </Button>
+            <!-- Column 5 -->
+            <Button
+                id="Weapon"
+                class="button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Weapon)">
+                Draw a Weapon
+            </Button>
+        </HorizontalLayout>
+        <!-- Draw Random Card by Name Area -->
+        <Text minHeight="20">Draw a random Unique Asset by Name:</Text>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 0"
+            childAlignment="UpperCenter">
+            <!-- Column 1 -->
+            <Button
+                id="AgencySecrets"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Agency Secrets)">
+                Agency Secrets
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="BurythemDeep"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Bury them Deep)">
+                Bury them Deep
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="CourierRun"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Courier Run)">
+                Courier Run
+            </Button>
+            <!-- Column 4 -->
+            <Button
+                id="CrypticText"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Cryptic Text)">
+                Cryptic Text
+            </Button>
+            <!-- Column 5 -->
+            <Button
+                id="DimentionalStudy"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Dimentional Study)">
+                Dimentional Study
+            </Button>
+        </HorizontalLayout>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 0"
+            childAlignment="UpperCenter">
+            <!-- Column 1 -->
+            <Button
+                id="EnlisttheMasses"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Enlist the Masses)">
+                Enlist the Masses
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="ExploringtheRuins"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Exploring the Ruins)">
+                Exploring the Ruins
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="FortheGreaterGood"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(For the Greater Good)">
+                For the Greater Good
+            </Button>
+            <!-- Column 4 -->
+            <Button
+                id="FundingtheCause"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Funding the Cause)">
+                Funding the Cause
+            </Button>
+            <!-- Column 5 -->
+            <Button
+                id="MysteriousIdol"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Mysterious Idol)">
+                Mysterious Idol
+            </Button>
+        </HorizontalLayout>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 0"
+            childAlignment="UpperCenter">
+            <!-- Column 1 -->
+            <Button
+                id="MythosCodex"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Mythos Codex)">
+                Mythos Codex
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="OldJournal"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Old Journal)">
+                Old Journal
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="Provisions"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Provisions)">
+                Provisions
+            </Button>
+            <!-- Column 4 -->
+            <Button
+                id="PurifyingtheWorld"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Purifying the World)">
+                Purifying the World
+            </Button>
+            <!-- Column 5 -->
+            <Button
+                id="SacrificestoMake"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Sacrifices to Make)">
+                Sacrifices to Make
+            </Button>
+        </HorizontalLayout>
+        <HorizontalLayout
+            childForceExpandHeight="false"
+            spacing="24"
+            padding="32 32 0 0"
+            childAlignment="UpperCenter">
+            <!-- Column 1 -->
+            <Button
+                id="SealingtheOldOnes"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Sealing the Old Ones)">
+                Sealing the Old Ones
+            </Button>
+            <!-- Column 2 -->
+            <Button
+                id="StoneChest"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Stone Chest)">
+                Stone Chest
+            </Button>
+            <!-- Column 3 -->
+            <Button
+                id="StoneTablet"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Stone Tablet)">
+                Stone Tablet
+            </Button>
+            <!-- Column 4 -->
+            <Button
+                id="TreasureMap"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Treasure Map)">
+                Treasure Map
+            </Button>
+            <!-- Column 5 -->
+            <Button
+                id="WalkingtheLeyLines"
+                class="button__small button__uniqueassets"
+                deck="uniqueassets"
+                onClick="button_drawCard_from_UI(Walking the Ley Lines)">
+                Walking the Ley Lines
+            </Button>
+        </HorizontalLayout>
+    </VerticalLayout>
+</Panel>

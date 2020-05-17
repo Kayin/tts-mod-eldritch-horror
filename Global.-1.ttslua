@@ -1,0 +1,532 @@
+--[[ Eldrich Horror - Scripted Setup by Kayin --]]
+
+--[[ Global Variables --]]
+
+-- Global Values
+GLOBAL = {
+    NON_INTERACTIBLE = 'nonint', -- If string is in item description, then it will set 'no interaction' on load
+    MENUS_ARE_CLOSED = true,     -- global boolean for if any menu is open or closed
+    COLOR = {
+        CONDITION_DARKEST_RED_RGB     = {0.21, 0, 0},
+        CONDITION_DARK_RED_RGB        = {0.51, 0.06, 0.09},
+        CONDITION_MEDIUM_RED_RGB      = {0.76, 0.34, 0.35},
+        CONDITION_LIGHT_RED_RGB       = {0.95, 0.70, 0.70},
+        SPELL_DARKEST_PURPLE_RGB      = {0.22, 0.13, 0.19},
+        SPELL_DARK_PURPLE_RGB         = {0.33, 0.20, 0.29},
+        SPELL_MEDIUM_PURPLE_RGB       = {0.53, 0.36, 0.48},
+        SPELL_LIGHT_PURPLE_RGB        = {0.87, 0.73, 0.83},
+        UNIQUEASSETS_DARKEST_GOLD_RGB = {0.27, 0.20, 0.11},
+        UNIQUEASSETS_DARK_GOLD_RGB    = {0.41, 0.32, 0.21},
+        UNIQUEASSETS_MEDIUM_GOLD_RGB  = {0.63, 0.48, 0.30},
+        UNIQUEASSETS_LIGHT_GOLD_RGB   = {0.93, 0.69, 0.41},
+    }
+}
+
+-- Player Stuff
+PLAYER = {}
+    PLAYER.RED = {}
+        PLAYER.RED.HEALTH       = { GUID = 'b061b5', OBJ = nil }
+        PLAYER.RED.SANITY       = { GUID = 'af7c87', OBJ = nil }
+        PLAYER.RED.CHARSPACE    = { GUID = '724d77', OBJ = nil }
+    PLAYER.YELLOW = {}
+        PLAYER.YELLOW.HEALTH    = { GUID = 'd60365', OBJ = nil }
+        PLAYER.YELLOW.SANITY    = { GUID = '3ec0e6', OBJ = nil }
+        PLAYER.YELLOW.CHARSPACE = { GUID = '068846', OBJ = nil }
+    PLAYER.WHITE = {}
+        PLAYER.WHITE.HEALTH     = { GUID = 'c443d2', OBJ = nil }
+        PLAYER.WHITE.SANITY     = { GUID = 'ff4f0b', OBJ = nil }
+        PLAYER.WHITE.CHARSPACE  = { GUID = '4a5241', OBJ = nil }
+    PLAYER.BLUE = {}
+        PLAYER.BLUE.HEALTH      = { GUID = 'e1fd37', OBJ = nil }
+        PLAYER.BLUE.SANITY      = { GUID = '92088f', OBJ = nil }
+        PLAYER.BLUE.CHARSPACE   = { GUID = '603895', OBJ = nil }
+    PLAYER.TEAL = {}
+        PLAYER.TEAL.HEALTH      = { GUID = '574a18', OBJ = nil }
+        PLAYER.TEAL.SANITY      = { GUID = 'a70018', OBJ = nil }
+        PLAYER.TEAL.CHARSPACE   = { GUID = 'a87dab', OBJ = nil }
+    PLAYER.GREEN = {}
+        PLAYER.GREEN.HEALTH     = { GUID = 'e9704d', OBJ = nil }
+        PLAYER.GREEN.SANITY     = { GUID = '826e4d', OBJ = nil }
+        PLAYER.GREEN.CHARSPACE  = { GUID = 'a6da4f', OBJ = nil }
+
+-- Scripting Zones
+ZONE = {}
+    ZONE.LOCATION = { 
+        SCANDANAVIASPACE14 = '2c61ac'
+    }
+
+-- General Game Items and Components
+ITEM = {}
+    ITEM.GAMEBOARD = { GUID = 'f56ef9', OBJ = nil }
+    ITEM.CANDLE    = { GUID = '960239', OBJ = nil }
+    ITEM.SKULL     = { GUID = '457b1f', OBJ = nil }
+    ITEM.SPELLBOOK = { GUID = '006d91', OBJ = nil }
+
+-- Card Decks
+DECK = {}
+    DECK.ARTIFACTS     = { GUID = 'a20be5', OBJ = nil, POS = {}, CARDS = {} }
+    DECK.ASSETS        = { GUID = 'mv1s47', OBJ = nil, POS = {}, CARDS = {} }
+    DECK.CONDITIONS    = { GUID = '48d2f7', OBJ = nil, POS = {}, CARDS = {} }
+    DECK.SPELLS        = { GUID = 'n17byb', OBJ = nil, POS = {}, CARDS = {} }
+    DECK.UNIQUEASSETS  = { GUID = 'hr2o1d', OBJ = nil, POS = {}, CARDS = {} }
+
+-- Bags and Containers
+BAG = {}
+    BAG.PAWNS       = { GUID = '5p189x', OBJ = nil, POS = {} }
+    BAG.CLUE        = { GUID = 'd0004a', OBJ = nil, POS = {} }
+    BAG.GATE        = { GUID = '83e2f4', OBJ = nil, POS = {} }
+    BAG.MONSTER     = { GUID = 'f784da', OBJ = nil, POS = {} }
+    BAG.TRAIN       = { GUID = '4f3b1c', OBJ = nil, POS = {} }
+    BAG.BOAT        = { GUID = 'eb95f3', OBJ = nil, POS = {} }
+    BAG.FOCUS       = { GUID = '973da3', OBJ = nil, POS = {} }
+    BAG.RESOURCE    = { GUID = 'f0fcc6', OBJ = nil, POS = {} }
+    BAG.ELDRITCH    = { GUID = '3629c5', OBJ = nil, POS = {} }
+    BAG.LORE        = { GUID = 'b5323f', OBJ = nil, POS = {} }
+    BAG.INFLUENCE   = { GUID = '9abe6e', OBJ = nil, POS = {} }
+    BAG.OBSERVATION = { GUID = '0c1570', OBJ = nil, POS = {} }
+    BAG.STRENGTH    = { GUID = 'd90975', OBJ = nil, POS = {} }
+    BAG.WILL        = { GUID = '930fb6', OBJ = nil, POS = {} }
+
+-- Character Sheet Definitions
+CHAR = { GUID = '5d0a7c', OBJ = nil, POS = {}, INVESTIGATORS = {} }
+
+-- Investigator Story Deck
+STORY = { GUID = '4f714d', OBJ = nil, POS = {}, INVESTIGATORS = {} }
+
+--[[ Event Functions --]]
+
+-- Called when a game save is finished loading every Object
+function onLoad()
+
+    --[[ Populate Global Tables --]]
+
+    -- for each color in PLAYER table
+    for player_color, _ in pairs(PLAYER) do
+        -- and each item in color's table
+        for player_thing, _ in pairs (PLAYER[player_color]) do
+            -- create item object from GUID
+            PLAYER[player_color][player_thing].OBJ = getObjectFromGUID(PLAYER[player_color][player_thing].GUID)
+        end
+    end
+
+    -- for each index in ITEM table
+    for item_name, _ in pairs(ITEM) do
+        -- create item object from GUID
+        ITEM[item_name].OBJ = getObjectFromGUID(ITEM[item_name].GUID)
+    end
+
+    -- for each index in DECK table
+    for deck_name, _ in pairs(DECK) do
+        -- create deck object from GUID
+        DECK[deck_name].OBJ = getObjectFromGUID(DECK[deck_name].GUID)
+        -- get the position of the deck object and record to Deck table
+        DECK[deck_name].POS = DECK[deck_name].OBJ.getPosition()
+        -- init object list table
+        local object_list = {}
+        -- for each object in deck object
+        for _, object in pairs(DECK[deck_name].OBJ.getObjects()) do
+            -- add the name to the object list table
+            table.insert(object_list, object['name'])
+            -- and sort it alphabetically
+            table.sort(object_list)
+        end
+        -- init hash for removing duplicates
+        local hash = {}
+        -- for each card name in the object list
+        for i, card_name in ipairs(object_list) do
+            -- add to DECK[deck_name].CARDS table unless it's a duplicate
+            if (not hash[card_name]) then
+                table.insert(DECK[deck_name].CARDS, card_name)
+                hash[card_name] = true
+            end
+        end
+    end
+
+    -- for each index in BAG table
+    for token_name, _ in pairs(BAG) do
+        -- create item object from GUID
+        BAG[token_name].OBJ = getObjectFromGUID(BAG[token_name].GUID)
+        -- get the position of the container object and record to BAG table
+        BAG[token_name].POS = BAG[token_name].OBJ.getPosition()
+    end
+
+    -- create character deck object from GUID
+    CHAR.OBJ = getObjectFromGUID(CHAR.GUID)
+    -- get the position of the character deck object and record to CHAR table
+    CHAR.POS = CHAR.OBJ.getPosition()
+    -- for each investigator in the character deck object
+    for _, character in pairs(CHAR.OBJ.getObjects()) do
+        -- add the name and GUID to the CHAR list table
+        CHAR.INVESTIGATORS[character['name']:gsub('[%s+%"%\']', '')] = { name = character['name'], GUID = character['guid'] }
+    end
+
+    -- create story deck object from GUID
+    STORY.OBJ = getObjectFromGUID(STORY.GUID)
+    -- get the position of the character deck object and record to CHAR table
+    STORY.POS = STORY.OBJ.getPosition()
+    -- for each investigator in the character deck object
+    for _, character in pairs(STORY.OBJ.getObjects()) do
+        -- add the name and GUID to the CHAR list table
+        STORY.INVESTIGATORS[character['name']:gsub('[%s+%"%\']', '')] = { name = character['name'], GUID = character['guid'] }
+    end
+
+    --[[ Init Buttons and Thier Global Trigger Functions --]]
+
+    -- XML UI button gain card global function
+    _G['button_drawCard_from_UI'] = function(clicking_player, desired_object)
+        local button_id = desired_object:gsub('[%s+%"%\']', '')
+        local deck_name = Global.UI.getAttributes(button_id).deck:upper()
+        local target_player = clicking_player.color
+        takeItemFromContainer(DECK[deck_name].OBJ, DECK[deck_name].POS, desired_object, target_player)
+        closeMenu(player_color, deck_name)
+    end
+
+    --  Open setup menu button global function
+    _G['openMenu_Setup'] = function(button_object, clicking_player)
+        openMenu(clicking_player, 'setup')
+    end
+
+    --  Open setup menu button - Candle object button
+    ITEM.CANDLE.OBJ.createButton({
+        click_function = 'openMenu_Setup',
+        function_owner = Global,
+        tooltip        = 'Open Game Setup Menu',
+        position       = {0, 0, 0},
+        rotation       = {0, 0, 0},
+        color          = {0, 0, 0, 0},
+        width          = 2000,
+        height         = 2000
+    })
+
+    --  Open conditions menu button global function
+    _G['openMenu_Conditions'] = function(button_object, clicking_player)
+        openMenu(clicking_player, 'conditions')
+    end
+
+    -- Open conditions menu button on Skull object
+    ITEM.SKULL.OBJ.createButton({
+        click_function = 'openMenu_Conditions',
+        function_owner = Global,
+        tooltip        = 'Find a Condition...',
+        position       = {0, 0, 0},
+        rotation       = {0, 0, 0},
+        color          = {0, 0, 0, 0},
+        width          = 300,
+        height         = 300
+    })
+
+    -- Open conditions menu button on Deck object
+    DECK.CONDITIONS.OBJ.createButton({
+        click_function = 'openMenu_Conditions',
+        function_owner = Global,
+        label          = 'Find',
+        tooltip        = 'Find a Condition...',
+        position       = {1.85, -0.15, -0.8},
+        rotation       = {0, 0, 0},
+        width          = 420,
+        height         = 320,
+        font_size      = 130,
+        color          = GLOBAL.COLOR.CONDITION_DARK_RED_RGB,
+        hover_color    = GLOBAL.COLOR.CONDITION_LIGHT_RED_RGB,
+        press_color    = GLOBAL.COLOR.CONDITION_MEDIUM_RED_RGB,
+        font_color     = {1, 1, 1}
+    })
+
+    -- Draw random condition button global function
+    _G['button_drawCard_Conditions'] = function(button_object, clicking_player)
+        takeItemFromContainer(DECK.CONDITIONS.OBJ, DECK.CONDITIONS.POS, nil, clicking_player)
+    end
+
+    -- Draw random condition button global function
+    DECK.CONDITIONS.OBJ.createButton({
+        click_function = 'button_drawCard_Conditions',
+        function_owner = Global,
+        label          = 'Draw',
+        tooltip        = 'Draw a Condition',
+        position       = {1.85, -0.15, 0.8},
+        rotation       = {0, 0, 0},
+        width          = 420,
+        height         = 320,
+        font_size      = 130,
+        color          = GLOBAL.COLOR.CONDITION_DARK_RED_RGB,
+        hover_color    = GLOBAL.COLOR.CONDITION_LIGHT_RED_RGB,
+        press_color    = GLOBAL.COLOR.CONDITION_MEDIUM_RED_RGB,
+        font_color     = {1, 1, 1}
+    })
+
+    -- Open spells menu button global function
+    _G['openMenu_Spells'] = function(button_object, clicking_player)
+        openMenu(clicking_player, 'spells')
+    end
+
+    -- Open spells menu button on Spellbook object
+    ITEM.SPELLBOOK.OBJ.createButton({
+        click_function = 'openMenu_Spells',
+        function_owner = Global,
+        tooltip        = 'Find a Spell...',
+        position       = {0, 0, 0},
+        rotation       = {0, 0, 0},
+        color          = {0, 0, 0, 0},
+        width          = 600,
+        height         = 600
+    })
+
+    -- Open spells menu button on Deck object
+    DECK.SPELLS.OBJ.createButton({
+        click_function = 'openMenu_Spells',
+        function_owner = Global,
+        label          = 'Find',
+        tooltip        = 'Find a Spell...',
+        position       = {1.85, -0.15, -0.8},
+        rotation       = {0, 0, 0},
+        width          = 420,
+        height         = 320,
+        font_size      = 130,
+        color          = GLOBAL.COLOR.SPELL_DARK_PURPLE_RGB,
+        hover_color    = GLOBAL.COLOR.SPELL_LIGHT_PURPLE_RGB,
+        press_color    = GLOBAL.COLOR.SPELL_MEDIUM_PURPLE_RGB,
+        font_color     = {1, 1, 1}
+    })
+
+    -- Draw random spell button global function
+    _G['button_drawCard_Spells'] = function(button_object, clicking_player)
+        takeItemFromContainer(DECK.SPELLS.OBJ, DECK.SPELLS.POS, nil, clicking_player)
+    end
+
+    -- Draw random spell button on Deck
+    DECK.SPELLS.OBJ.createButton({
+        click_function = 'button_drawCard_Spells',
+        function_owner = Global,
+        label          = 'Draw',
+        tooltip        = 'Draw a Spell',
+        position       = {1.85, -0.15, 0.8},
+        rotation       = {0, 0, 0},
+        width          = 420,
+        height         = 320,
+        font_size      = 130,
+        color          = GLOBAL.COLOR.SPELL_DARK_PURPLE_RGB,
+        hover_color    = GLOBAL.COLOR.SPELL_LIGHT_PURPLE_RGB,
+        press_color    = GLOBAL.COLOR.SPELL_MEDIUM_PURPLE_RGB,
+        font_color     = {1, 1, 1}
+    })
+
+    -- Open unique assets menu button global function
+    _G['openMenu_UniqueAssets'] = function(button_object, clicking_player)
+        openMenu(clicking_player, 'uniqueassets')
+    end
+
+    -- Open unique assets menu button on Deck object
+    DECK.UNIQUEASSETS.OBJ.createButton({
+        click_function = 'openMenu_UniqueAssets',
+        function_owner = Global,
+        label          = 'Find',
+        tooltip        = 'Find a Unique Asset...',
+        position       = {1.85, -0.15, -0.8},
+        rotation       = {0, 0, 0},
+        width          = 420,
+        height         = 320,
+        font_size      = 130,
+        color          = GLOBAL.COLOR.UNIQUEASSETS_DARK_GOLD_RGB,
+        hover_color    = GLOBAL.COLOR.UNIQUEASSETS_LIGHT_GOLD_RGB,
+        press_color    = GLOBAL.COLOR.UNIQUEASSETS_MEDIUM_GOLD_RGB,
+        font_color     = {1, 1, 1}
+    })
+
+    -- Draw random condition button global function
+    _G['button_drawCard_UniqueAssets'] = function(button_object, clicking_player)
+        takeItemFromContainer(DECK.UNIQUEASSETS.OBJ, DECK.UNIQUEASSETS.POS, nil, clicking_player)
+    end
+
+    -- Draw random condition button global function
+    DECK.UNIQUEASSETS.OBJ.createButton({
+        click_function = 'button_drawCard_UniqueAssets',
+        function_owner = Global,
+        label          = 'Draw',
+        tooltip        = 'Draw a Unique Asset',
+        position       = {1.85, -0.15, 0.8},
+        rotation       = {0, 0, 0},
+        width          = 420,
+        height         = 320,
+        font_size      = 130,
+        color          = GLOBAL.COLOR.UNIQUEASSETS_DARK_GOLD_RGB,
+        hover_color    = GLOBAL.COLOR.UNIQUEASSETS_LIGHT_GOLD_RGB,
+        press_color    = GLOBAL.COLOR.UNIQUEASSETS_MEDIUM_GOLD_RGB,
+        font_color     = {1, 1, 1}
+    })
+
+    -- Gain debt condition for "Bank Loan" global function
+    _G['button_BankLoan'] = function(button_object, clicking_player)
+        takeItemFromContainer(DECK.CONDITIONS.OBJ, DECK.CONDITIONS.POS, 'Debt', clicking_player)
+    end
+
+    -- Gain debt condition for "Bank Loan" button
+    ITEM.GAMEBOARD.OBJ.createButton({
+        click_function = 'button_BankLoan',
+        function_owner = Global,
+        label          = 'Debt Condition',
+        tooltip        = 'Gain a Debt Condition',
+        position       = {-25.08, 0.1, 12},
+        rotation       = {0, 0, 0},
+        width          = 1600,
+        height         = 320,
+        font_size      = 130,
+        color          = GLOBAL.COLOR.CONDITION_DARK_RED_RGB,
+        hover_color    = GLOBAL.COLOR.CONDITION_LIGHT_RED_RGB,
+        press_color    = GLOBAL.COLOR.CONDITION_MEDIUM_RED_RGB,
+        font_color     = {1, 1, 1}
+    })
+
+    --[[ DEVELOPMENT TESTS --]]
+
+    -- local test_list = {}
+    -- for _, object in pairs(DECK.ARTIFACTS.OBJ.getObjects()) do
+    --     table.insert(test_list, object['name'])
+    --     table.sort(test_list)
+    -- end
+    -- for i, v in pairs(test_list) do
+    --     print(i, v)
+    -- end
+
+end
+
+--[[ Helper Functions --]]
+
+-- Open Menu Function
+function openMenu(clicking_player, menu_id)
+    if GLOBAL.MENUS_ARE_CLOSED then
+        self.UI.show(menu_id:lower())
+        GLOBAL.MENUS_ARE_CLOSED = false
+    end
+end
+
+-- Close Menu Function
+function closeMenu(clicking_player, menu_id)
+    self.UI.hide(menu_id:lower())
+    GLOBAL.MENUS_ARE_CLOSED = true
+end
+
+--[[ Game Setup Functions --]]
+
+-- Player Investigator Character Setup
+function setup_playerCharacter(button_object, clicking_player)
+
+    --[[ Investigator Starting Health and Sanity --]]
+    -- get starting health and sanity values
+    local starting_health = button_object.getVar('hp')
+    local starting_sanity = button_object.getVar('san')
+    -- find this player's health and sanity tracker
+    local player_health_object = PLAYER[clicking_player:upper()].HEALTH.OBJ
+    local player_sanity_object = PLAYER[clicking_player:upper()].SANITY.OBJ
+    -- set player's health tokens to starting values
+    player_health_object.call('reset', {starting_health})
+    player_sanity_object.call('reset', {starting_sanity})
+
+    --[[ Investigator Starting Pawn Location --]]
+
+    local investigator_name = button_object.getVar('name')
+    -- get starting location name, trim space, dashes, commas
+    local starting_location = button_object.getVar('location'):gsub('[%s+%-%,]',''):upper()
+    -- look for matching zone location name and make object
+    local starting_location_zone = getObjectFromGUID(ZONE.LOCATION[starting_location])
+    -- get pawn and place it
+    local pawn_spawn_position = { BAG.PAWNS.POS['x'], BAG.PAWNS.POS['y'] + 5, BAG.PAWNS.POS['z'] }
+    for _, value in pairs(BAG.PAWNS.OBJ.getObjects()) do
+        local takeParams = {
+            guid = value.guid,
+            position = pawn_spawn_position,
+            callback_function = function(object, zone) sendObjectToLocation(value.guid, starting_location_zone) end
+        }
+        -- if nickname matched investigator_name, take that object, then shuffle deck
+        if (value.nickname == investigator_name) then
+            BAG.PAWNS.OBJ.takeObject(takeParams)
+            break
+        end
+    end
+
+    --[[ Investigator Personl Story Cards --]]
+    -- local get_personal_story_card = takeItemFromContainer(STORY.OBJ, STORY.POS, investigator_name, clicking_player)
+    -- for i, 2 do
+    --     wait.time(function() get_personal_story_card end, 1)
+    -- end
+    takeItemFromContainer(STORY.OBJ, STORY.POS, investigator_name, clicking_player)
+
+    --[[ Investigator Starting Items --]]
+
+    -- for each item in 'starters' variable...
+    for starting_object_type, starting_object_list in pairs(button_object.getVar('starters')) do
+        -- get the list of starting items in that category
+        for _, starting_object_name in pairs(starting_object_list) do
+            -- ...handle differently if it's a Token or a Card
+            if string.match(starting_object_type, 'token') then
+                takeItemFromContainer(BAG[starting_object_name:upper()].OBJ, BAG[starting_object_name:upper()].POS, nil, PLAYER[clicking_player:upper()].CHARSPACE.OBJ.getPosition())
+            else
+                takeItemFromContainer(DECK[starting_object_type:upper()].OBJ, DECK[starting_object_type:upper()].POS, starting_object_name, clicking_player)
+            end
+        end
+    end
+
+    --[[ Cleanup --]]
+
+    -- send investigator sheet to player area
+    button_object.setPositionSmooth(PLAYER[clicking_player:upper()].CHARSPACE.OBJ.getPosition(), false, true)
+    -- annouce chosen character
+    broadcastToAll(clicking_player .. ' is playing as ' .. button_object.getVar('name'))
+    -- then kill the button
+    button_object.removeButton(0)
+end
+
+--[[ Game Action Functions --]]
+
+-- function to take a random item (of name or type) from a container and send to player who searched for it
+-- @param desired_object string - can be a card name, a card sub type, or nil (if random card desired)
+function takeItemFromContainer(container_OBJ, container_POS, desired_object, target_destination)
+    -- first shuffle deck
+    container_OBJ.shuffle()
+    -- and define the takeObject parameters
+    local take_parameters = {
+        top = false,
+        position = { container_POS['x'], container_POS['y'] + 10, container_POS['z'] },
+        callback_function = function(object, destination) sendObjectToLocation(object.guid, target_destination) end
+    }
+    -- if the desired object is a thing
+    if desired_object ~= nil then
+    -- then look through container object
+        for _, object in pairs(container_OBJ.getObjects()) do
+            -- and if nickname matched desired_object, take that object, then shuffle deck
+            if string.match(object.nickname, desired_object) then
+                take_parameters["guid"] = object.guid
+                container_OBJ.takeObject(take_parameters)
+                break
+            end
+        end
+    else
+    -- if it's nil, assume that means a random card is desired
+        container_OBJ.takeObject(take_parameters)
+    end
+end
+
+-- function to send an object to a vector, player color string, or zone object
+function sendObjectToLocation(object_GUID, target_destination)
+    -- get object from GUID
+    local object   = getObjectFromGUID(object_GUID)
+    -- set target (default expecting Vector)
+    local target   = target_destination
+    local rotation = { 0, 180, 0 }
+    -- if target is a player color string (ex. 'Yellow')
+    if type(target_destination) == 'string' then
+        local offset = 4
+        local hand = Player[target_destination].getPlayerHand()
+        target = {
+            hand.pos_x + hand.trigger_forward_x * offset,
+            hand.pos_y + hand.trigger_forward_y * offset,
+            hand.pos_z + hand.trigger_forward_z * offset
+        }
+        rotation = { hand.rot_x, hand.rot_y + 180, hand.rot_z }
+    -- if target is a zone object
+    elseif type(target_destination) == 'userdata' then
+        target = target_destination.getPosition()
+    end
+    -- send it off
+    object.setPositionSmooth(target, false, true)
+    object.setRotationSmooth(rotation)
+end

@@ -1,0 +1,6 @@
+function onCollisionEnter()
+    -- Shuffle on each draw
+    if self.getQuantity() > 0 then
+        self.shuffle()
+    end
+end

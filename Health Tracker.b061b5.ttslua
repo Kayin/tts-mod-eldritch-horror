@@ -1,0 +1,80 @@
+local buttons = {}
+value = math.ceil(math.floor(((self.mass)*100000) - 150000)/2)
+
+local button_value = {}
+button_value.index = 0
+button_value.click_function = 'doNothing'
+button_value.color = {1, 0.73, 0.17}
+button_value.font_color = {1, 1, 1}
+button_value.function_owner = self
+button_value.label = tostring(value)
+button_value.position = {0.16, 0.1, 0.45}
+button_value.width = 0
+button_value.height = 0
+button_value.font_size = 400
+table.insert(buttons, button_value)
+
+local button_minus = {}
+
+button_minus.click_function = 'minus'
+button_minus.function_owner = self
+
+button_minus.label = '-'
+button_minus.color = {1, 0.192, 0.18}
+button_minus.font_color = {1, 1, 1}
+button_minus.position = {-1.08, 0, 0.43}
+button_minus.width = 300
+button_minus.height = 300
+button_minus.font_size = 250
+table.insert(buttons, button_minus)
+
+local button_plus = {}
+
+button_plus.click_function = 'plus'
+button_plus.function_owner = self
+
+button_plus.label = '+'
+button_plus.color = {1, 0.192, 0.18}
+button_plus.font_color = {1, 1, 1}
+button_plus.position = {1.4, 0, 0.43}
+button_plus.width = 300
+button_plus.height = 300
+button_plus.font_size = 250
+table.insert(buttons, button_plus)
+
+function onload()
+    for _, button in ipairs(buttons) do
+    self.createButton(button)
+    end
+end
+
+function doNothing()
+    -- doing nothing
+end
+
+function updatevalue()
+    button_value.label = tostring(value)
+    self.editButton(button_value)
+    self.use_gravity = true
+    self.mass = (value*2 + 150000)/100000
+    self.drag = 0.1
+    self.angular_drag = 0.1
+end
+
+function changevalue(magn)
+    value = value + magn
+    updatevalue()
+end
+
+function reset(reset_values)
+    value = reset_values[1]
+    updatevalue()
+end
+
+function minus()
+    changevalue(-1)
+end
+
+function plus()
+    changevalue(1)
+end
